@@ -1,0 +1,15 @@
+{
+  "name": "notedok.services.app",
+  "version": "1.0.0",
+  "description": "NotedOK App Service",
+  "author": {
+    "name": "artemkv",
+    "email": "artemkv@gmail.com"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+  },
+  "scripts": {
+  }
+}
