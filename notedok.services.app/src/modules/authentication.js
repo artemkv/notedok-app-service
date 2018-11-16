@@ -47,7 +47,7 @@ function authenticate() {
             // TODO: indicate debug mode
         } else {
             // Verify the state
-            var state = oauthParams["state"];
+            let state = oauthParams["state"];
             if (!state || state !== getSavedAuthState()) {
                 // TODO: error message
 
@@ -76,7 +76,7 @@ function authenticate() {
     return null;
 }
 
-var authentication = {
+const authentication = {
     authenticate: authenticate
 };
 

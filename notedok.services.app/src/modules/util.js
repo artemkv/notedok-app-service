@@ -9,9 +9,9 @@ function parseHashParams() {
     const VALUE_PART = 2;
 
     let params = {};
-    var anchorPartWithoutHashSign = location.hash.substring(1);
-    var nameValueRegex = /([^&=]+)=([^&]*)/g;
-    var nameValuePair = nameValueRegex.exec(anchorPartWithoutHashSign);
+    let anchorPartWithoutHashSign = location.hash.substring(1);
+    let nameValueRegex = /([^&=]+)=([^&]*)/g;
+    let nameValuePair = nameValueRegex.exec(anchorPartWithoutHashSign);
     while (nameValuePair) {
         params[decodeURIComponent(nameValuePair[NAME_PART])] = decodeURIComponent(nameValuePair[VALUE_PART]);
         nameValuePair = nameValueRegex.exec(anchorPartWithoutHashSign);

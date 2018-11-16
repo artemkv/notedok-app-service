@@ -86,7 +86,7 @@ const storage = {
                     var metadata = extractMetadataFromListFolderResult(data);
                 }
 
-                var fileList = getFileListFromMetadata(metadata);
+                let fileList = getFileListFromMetadata(metadata);
                 onSuccess(fileList);
             },
             error: function (jqXHR, textStatus, errorThrown) {
@@ -232,7 +232,7 @@ const storage = {
     deleteNote: function deleteFile(note, onSuccess, onError) {
         let url = "https://api.dropboxapi.com/2/files/delete";
 
-        var args = {
+        let args = {
             path: note.Path
         };
 
@@ -262,9 +262,9 @@ const storage = {
     // The returned link is obtained directly from Dropbox API and has no reference to the NotedOK.com.
     // The caller is supposed to pack the link into the NotedOK.com-related link.
     getSharedLink: function getSharedLink(note, onSuccess, onError) {
-        var url = "https://api.dropboxapi.com/2/sharing/create_shared_link_with_settings";
+        let url = "https://api.dropboxapi.com/2/sharing/create_shared_link_with_settings";
 
-        var args = {
+        let args = {
             path: note.Path
         };
 

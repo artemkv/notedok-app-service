@@ -1,10 +1,10 @@
 ﻿"use strict";
 
 // Module
-var storage = {
+const storage = {
     token: null,
     retrieveFileList: function retrieveFileList(searchString, onSuccess) {
-        var fileList = [];
+        let fileList = [];
         if (searchString) {
             fileList = ["file001.txt", "file005.txt", "file014.txt"];
         }
