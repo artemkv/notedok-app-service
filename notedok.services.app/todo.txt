@@ -1,2 +1,3 @@
 - cache index.html as public, 86400''
 - lint
+- clean dist
