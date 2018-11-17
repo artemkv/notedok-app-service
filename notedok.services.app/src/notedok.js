@@ -5,6 +5,8 @@ import Util from "./modules/util";
 import UserInterface from "./modules/ui";
 import Authentication from "./modules/authentication";
 import Conversion from "./modules/conversion";
+import "./notedok.css";
+import "./spinner.css";
 
 // Constants
 const NOTES_ON_PAGE = 5;

@@ -1,0 +1,469 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    font-family: "Segoe UI", arial, sans-serif;
+    background-color: #f1f1f1;
+}
+
+.placeholder {
+    color: #a9a9a9;
+}
+
+.client-area-outer {
+    margin-left: auto;
+    margin-right: auto;
+    width: 900px;
+}
+
+.client-area-inner {
+    width: 100%;
+    height: 100%;
+}
+
+.note-outer, .diag-outer {
+    margin: 16px;
+    padding: 16px;
+    background-color: white;
+    border-right: 1px solid #e3e3e3;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.note-title {
+    margin-top: 4px;
+    margin-bottom: 16px;
+    font-family: "Segoe UI", arial, sans-serif;
+    font-weight: 400;
+    font-size: 30px;
+    padding: 4px 8px 2px 8px;
+    border: none;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+    color: #000000;
+    text-overflow: ellipsis;
+}
+
+.note-text, textarea.note-text-editable {
+    font-size: 18px;
+    line-height: 1.5;
+    font-weight: 400;
+    font-family: monospace;
+    padding: 4px 8px 2px 8px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: auto;
+    outline: none;
+    white-space:pre-wrap;
+    text-overflow: ellipsis;
+}
+
+div.note-text ul, div.note-text ol
+{
+    white-space: normal;
+    list-style-position: inside;
+    display: inline-block;
+    width: 100%;
+}
+
+div.note-text {
+    border: 1px solid #ffffff;
+}
+
+textarea.note-text-editable {
+    border: 1px solid #e3e3e3;
+    resize: vertical;
+}
+
+textarea.text-area-short {
+    min-height: 300px;
+}
+
+textarea.text-area-tall {
+    min-height: 600px;
+}
+
+div.note-text-editable-container
+{
+    margin: 0px;
+    padding: 0px;
+    border: none;
+}
+
+.more-button-container {
+    margin: 16px;
+}
+
+.more-button, #run_diag {
+    width: 100%;
+    height: 40px;
+    cursor: pointer;
+}
+
+.note-controlarea {
+    margin-top: 8px;
+    margin-left: 8px;
+    text-align: right;
+}
+
+.note-button {
+    font-size: 13px;
+    color: #a9a9a9;
+    margin-left: 4px;
+    margin-right: 16px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.note-button:hover
+{
+    color: #000000;
+}
+
+/* Control area enable-disable logic */
+.template-note:not(.mode-edit) .note-controlarea {
+    display: none;
+}
+.note-outer:not(.mode-edit) .note-button-save {
+    display: none;
+}
+.note-outer:not(.mode-edit) .note-button-cancel {
+    display: none;
+}
+.note-outer:not(.mode-view) .note-button-share {
+    display: none;
+}
+.note-outer:not(.mode-view) .note-button-edit {
+    display: none;
+}
+.note-outer:not(.mode-view)  .note-button-delete {
+    display: none;
+}
+
+.search-inner {
+    width: 100%;
+    height: 100%;
+}
+
+.search-panel {
+    margin: 16px;
+    padding: 16px;
+    background-color: white;
+    border-right: 1px solid #e3e3e3;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.search-textbox {
+    font-family: monospace;
+    font-size: 18px;
+    font-weight: 400;
+    padding: 4px 8px 2px 8px;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    color: #000000;
+    width: 100%;
+}
+
+.codeblock
+{
+    border: 1px dotted #a9a9a9;
+    padding: 12px;
+    font-size: 12px;
+    font-family: monospace;
+    overflow-x: auto;
+    background: #fbfbfb;
+}
+
+.note-share-link-container
+{
+    padding: 8px 8px 2px 8px;
+    font-size: 13px;
+}
+
+.note-share-link
+{
+    width: 100%;
+    padding: 4px;
+    box-sizing: border-box;
+}
+
+.note-save-button
+{
+    display:none;
+}
+
+/* Deleted note */
+
+.deleted-note.note-outer {
+	border: 1px dotted #a9a9a9;
+	background-color: #f1f1f1;
+}
+
+.deleted-note .note-title {
+	background-color: #f1f1f1;
+	color: #a9a9a9;
+}
+
+/* Auto-suggest */
+.autocomplete-suggestions
+{
+    border-right: 1px solid #e3e3e3;
+    border-bottom: 1px solid #e3e3e3;
+    border-top: 1px solid #f1f1f1;
+    border-left: 1px solid #f1f1f1;
+    background: white;
+    overflow: auto;
+}
+.autocomplete-suggestion
+{
+    padding: 4px 8px 6px 8px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.autocomplete-selected
+{
+    background: #f1f1f1;
+}
+.autocomplete-suggestions strong
+{
+    font-weight: normal;
+    color: #2d89ef;
+}
+.autocomplete-group
+{
+}
+.autocomplete-group strong
+{
+    display: block;
+}
+.autocomplete-suggestions-container {
+    position: absolute;
+}
+
+/* Intro */
+
+#intro
+{
+    font-family: "Segoe UI", arial, sans-serif;
+}
+
+.intro-notedok 
+{
+    font-size: 160px;
+    color: #2d89ef;
+    text-align: center;
+}
+
+.intro-p
+{
+    font-size: 30px;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.intro-button-container
+{
+    font-size: 30px;  text-align: center;  
+    margin-top: 30px;
+}
+
+.intro-button
+{
+    padding: 16px;
+    font-size: 32px;
+    cursor: pointer;
+}
+
+.intro-signature
+{
+    font-size: 12px;  
+    text-align: center;  
+    margin-top: 100px;
+}
+
+@media only screen and (max-device-width: 768px) {
+    .client-area-outer {
+        margin-left: 0px;
+        margin-right: 0px;
+        width: 100%;
+    }
+
+    .notes-outer {
+        padding-top: 51px;
+    }
+
+    .note-outer {
+        margin: 0px;
+        border-right: none;
+        border-bottom: none;
+        padding: 24px;
+    }
+
+    body, html {
+        background-color: white;
+    }
+
+    .note-text {
+        font-size: 14px;
+        font-family: Helvetica, sans-serif;
+    }
+
+    .note-title {
+        font-size: 21px;
+    }
+
+    .search-textbox {
+        font-size: 21px;
+        font-family: Helvetica, sans-serif;
+    }
+
+    .note-controlarea {
+        text-align: center;
+        margin-top: 12px;
+    }
+
+    .note-button {
+        font-size: 14px;
+        margin-left: 12px;
+        margin-right: 12px;
+    }
+
+    .more-button {
+        height: 51px;
+        font-size: 14px;
+    }
+
+    .more-button-container {
+        margin: 4px;
+    }
+
+    .search-outer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 9999;
+        background: white;
+        border-bottom: 1px solid #e3e3e3;
+    }
+
+    .search-panel {
+        border-right: none;
+        border-bottom: none;
+        margin: 6px;
+        padding: 4px;
+    }
+
+    .codeblock {
+        font-size: 11px;
+    }
+
+    .autocomplete-suggestions {
+        font-size: 21px;
+    }
+
+    .autocomplete-suggestion {
+        margin-top: 12px;
+    }
+
+    textarea.note-text-editable {
+        font-size: 14px;
+        font-family: Helvetica, sans-serif;
+        position: fixed;
+        left: 0px;
+        top: 51px;
+        width: 100%;
+        min-height: 50px;
+        max-height: 300px;
+        bottom: 0px;
+        overflow-y: auto;
+    }
+
+    .note-save-button {
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 52px;
+        z-index: 99999;
+        display: block;
+        font-size: 21px;
+        background: white;
+        border: none;
+        border-bottom: 1px solid #e3e3e3;
+    }
+
+    /* Intro */
+    .intro-notedok {
+        font-size: 60px;
+    }
+
+    .intro-p {
+        font-size: 16px;
+    }
+
+    .intro-button-container {
+        font-size: 16px;
+    }
+
+    .intro-button {
+        font-size: 16px;
+    }
+
+    .intro-signature {
+        font-size: 12px;
+    }
+}
+
+/* Diag */
+
+.msg {
+	color: black;
+	padding: 2px;
+}
+
+.success {
+	color: green;
+	padding: 2px;
+	font-weight: bold;
+}
+
+.error {
+	color: red;
+	padding: 2px;
+	font-weight: bold;
+}
+
+/* Headings */
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: "Segoe UI", arial, sans-serif;
+}
+
+h1 {
+	font-size: 34px;
+}
+
+h2 {
+	font-size: 30px;
+}
+
+h3 {
+	font-size: 26px;
+}
+
+h4 {
+	font-size: 22px;
+}
+
+h5 {
+	font-size: 18px;
+}
+
+h6 {
+	font-size: 16px;
+}
