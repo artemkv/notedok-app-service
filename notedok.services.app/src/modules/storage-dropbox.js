@@ -1,5 +1,7 @@
 ﻿"use strict";
 
+import $ from "jquery";
+
 function extractMetadataFromSearchResult(result) {
     return result.matches.map(function searchResultToMetadata(x) {
         return x.metadata;

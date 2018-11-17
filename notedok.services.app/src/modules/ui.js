@@ -1,5 +1,6 @@
 ﻿"use strict";
 
+import $ from "jquery";
 import Formatting from "./formatting";
 import UiStrings from "./uistrings";
 import Util from "./util";
