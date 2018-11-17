@@ -1,5 +1,6 @@
 const path = require('path');
 const htmlWebpackPlugin = require('html-webpack-plugin');
+const copyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: './src/notedok.js',
@@ -24,7 +25,10 @@ module.exports = {
         new htmlWebpackPlugin({
             template: './src/index.html',
             filename: 'index.html'
-        })
+        }),
+        new copyWebpackPlugin([
+            { from: './src/favicon.ico' }
+        ])
     ],
     devtool: 'source-map'
 };
