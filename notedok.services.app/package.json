@@ -32,7 +32,8 @@
     "build:dev": "webpack --config webpack.dev.js",
     "build:prod": "webpack --config webpack.prod.js",
     "dev": "npm run clean && npm run test && npm run build:dev",
+    "prod": "npm run clean && npm run test && npm run build:prod",
     "start": "npm run dev && webpack-dev-server --config webpack.dev.js",
-    "prod": "npm run clean && npm run test && npm run build:prod"
+    "startprod": "npm run prod && webpack-dev-server --config webpack.prod.js"
   }
 }

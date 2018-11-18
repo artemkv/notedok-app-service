@@ -3,10 +3,13 @@ const htmlWebpackPlugin = require('html-webpack-plugin');
 const copyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-    entry: './src/notedok.js',
+    entry: {
+        notedok: './src/notedok.js',
+        shared: './src/shared.js'
+    },
     output: {
         path: path.resolve(__dirname, './dist'),
-        filename: './bundle.js'
+        filename: './[name].bundle.js'
     },
     module: {
         rules: [
@@ -23,8 +26,14 @@ module.exports = {
     },
     plugins: [
         new htmlWebpackPlugin({
+            filename: 'index.html',
             template: './src/index.html',
-            filename: 'index.html'
+            chunks: ['notedok']
+        }),
+        new htmlWebpackPlugin({
+            filename: 'shared.html',
+            template: './src/shared.html',
+            chunks: ['shared']
         }),
         new copyWebpackPlugin([
             { from: './src/favicon.ico' }

@@ -335,7 +335,7 @@ function bindToTextEvents(note) {
 
 function shareNote(note) {
     let onSuccess = function (link) {
-        let shareLink = Util.getLocationOrigin() + "/Shared#link=" + link;
+        let shareLink = Util.getLocationOrigin() + "/shared.html#link=" + link;
 
         let container = UserInterface.getNoteShareLinkContainerElement(note.Id);
         container.empty();

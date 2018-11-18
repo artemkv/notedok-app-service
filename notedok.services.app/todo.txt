@@ -1,5 +1,5 @@
 - cache index.html as public, 86400''
 - lint
 - hashes
-- split dev/prod
 - split jquery from the app?
+- fail build on ut failure

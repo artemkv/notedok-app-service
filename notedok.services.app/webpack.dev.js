@@ -3,5 +3,7 @@ const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
     mode: 'development',
-    entry: './src/notedok-diagnose.js'
+    entry: {
+        notedok: './src/notedok-diagnose.js'
+    },
 });
