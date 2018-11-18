@@ -1,6 +1,5 @@
 - cache index.html as public, 86400''
 - lint
-- favicon
 - hashes
 - split dev/prod
 - split jquery from the app?

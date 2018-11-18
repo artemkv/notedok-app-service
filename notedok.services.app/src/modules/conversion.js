@@ -31,8 +31,10 @@ function generatePathFromTitle(note, ensureUniqie) {
 }
 
 const conversion = {
-    getTitleFromPath: getTitleFromPath,
-    generatePathFromTitle: generatePathFromTitle
+    titleToPathCoverter: {
+        getTitleFromPath: getTitleFromPath,
+        generatePathFromTitle: generatePathFromTitle
+    }
 };
 
 export default conversion;

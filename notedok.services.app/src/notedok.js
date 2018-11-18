@@ -1,6 +1,7 @@
 ﻿"use strict";
 
 import $ from "jquery";
+import "devbridge-autocomplete";
 import Util from "./modules/util";
 import UserInterface from "./modules/ui";
 import Authentication from "./modules/authentication";
