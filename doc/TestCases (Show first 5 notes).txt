@@ -1,0 +1,84 @@
+﻿! Less than 5 notes
+
+* Create files "one.txt", "two.txt" and "three.txt"
+
+Expected:
+* Notes "one", "two" and "three" are shown
+* Content of every file is shown as a note text
+
+
+! More than 5 notes
+
+* Create files "one.txt", "two.txt", "three.txt", "four.txt", "five.txt", "six.txt", "seven.txt"
+
+Expected:
+* Only 5 first notes are shown (order is not determined)
+* Content of every file is shown as a note text
+
+
+! No notes
+
+* Remove all files
+
+Expected:
+* No notes are shown
+
+
+! Folders are filtered out
+
+* Create files "one.txt", "two.txt" and "three.txt"
+* Create folder "myfolder"
+
+Expected:
+* Notes "one", "two" and "three" are shown
+* Content of every file is shown as a note text
+* Folder "myfolder" is not shown
+
+
+! Script injection
+
+* Create file "alert('hello').txt" with content "<script>alert('hello')</script>"
+
+Expected:
+* Note with title "alert('hello')" and text "<script>alert('hello')</script>" is shown
+* There is no actual alert shown
+
+
+! File extensions
+
+* Create files "one.txt", "no extension", "image.png", "code.js", "styles.css", "web.config"
+
+Expected:
+* Only note "one" is shown
+
+
+! Empty file
+
+* Create file "empty.txt" with no content
+
+Expected:
+* Note "empty" is shown with no text
+
+
+! Long file name
+
+* Create file "123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789.txt"
+
+Expected:
+* Note "123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789" is shown
+
+
+! Long content
+
+Create file "long content.txt" with more than 100KB of text
+
+Expected:
+* Note "long content" is shown with the complete content as text
+
+
+! Encoding
+
+Create file with cyrillic content encoded in utf-8, utf-16 (big indian and little indian), ansi (koi8-r and windows-1251)
+
+Expected:
+* Text is readable

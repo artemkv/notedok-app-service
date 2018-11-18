@@ -1,0 +1,46 @@
+﻿! Authorization redirect
+
+* Go to https://notes.romama.com/
+* Alternatively, go to https://notes.romama.com
+* Alternatively, go to https://notes.romama.com/#
+
+Expected:
+* Redirected to DropBox for the authorization
+
+
+! Failed to authorize
+
+* Go to https://notes.romama.com/
+* Reject access
+
+Expected:
+* Error message, app stops
+
+
+! Authorized, redirect back
+
+* Go to https://notes.romama.com/
+* Alternatively, go to https://notes.romama.com
+* Alternatively, go to https://notes.romama.com/#
+* Enter credentials, confirm access
+
+Expected:
+* Redirected to https://notes.romama.com/#
+
+
+! Debug application
+
+* Go to https://notes.romama.com/#access_token=debug
+
+Expected:
+* No redirection, test data is loaded
+
+
+! CSRF attack modeling
+
+* Go to https://notes.romama.com/#access_token=hacked
+* Go to https://notes.romama.com/#access_token=hacked&state=hacked
+* Alternatively, go to https://notes.romama.com/#error=hacked&error_description=hacked
+
+Expected:
+* App stops, URI stays as is

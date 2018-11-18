@@ -1,0 +1,339 @@
+﻿! DropBox authentication
+
+As a regular user, I want to be recognized as a dropbox user
+
+* When not yet logged in, redirect to DropBox login page
+* When redirected back, save the token
+* When logged in already, continue with the app
+* Pass the random number in the state
+* Redirect to https page
+* /#access_token=debug allows to bypass the authentication and continue with the debug storage
+
+
+! Show first 5 notes
+
+As a regular user, I want to see my first 5 notes when I load page initially
+
+* Load list of files from DropBox (async)
+* Render first 5 notes (or as many as could find)
+	* Only text files should be shown (filter based on file extension ".txt")
+	* File name becomes a title (file extension ".txt" is omitted)
+	* File content becomes a text
+	* Title should be rendred as safe content
+	* Text should be rendred as safe content
+	* Note loading and rendering should be done asynchronously, since it might take time to retrieve the note content
+	* Title is always displayed as a single line
+	* Long title should be rendered with "..." at the end, replacing the hidden part
+	* Long text should be all visible, the note height is variable and adjusts to fit all text
+
+
+! Edit a note
+
+As a regular user, I want to edit note title and text
+
+* Title is rendered as a textbox without border, so it is immediately editable
+* Title max length is limited to 50 chars
+* Text becomes a textarea when clicked (click resulting in a text selection is ignored)
+* Title/text textboxes have the same visual style
+* When empty, title should be rendered as a watermark "No title"
+* When empty, text should be rendered as a watermark "Type your text here"
+* After changes are collected to be saved, the text textarea becomes a div again
+
+
+! Save the changes
+
+As a regular user, I want to make sure the changes I did are saved
+
+* When title/text textbox loses focus, changes are saved to DropBox
+* Changes should be saved asynchronously
+* If title left empty, generate the file name
+* When title is updated (manually or when auto-generated), the file should be renamed
+* Title can be invalid file name. The app should make a best effort to replace the invalid characters as follows:
+/ becomes (sl)
+? becomes (qst)
+< becomes (lt)
+> becomes (gt)
+\ becomes (bsl)
+: becomes (col)
+* becomes (star)
+| becomes (pipe)
+" becomes (dqt)
+^ becomes (crt)
+* If the title is still an invalid file name, dropbox won't sync it to the filesystem. This is known issue.
+
+
+!  Template note
+
+As a regular user, when I want to add a new note, I want to be able to type right into the empty pre-created template note.
+
+* Render template note as a first note displayed
+* Title should be rendered as a watermark "New note"
+* Auto-generated file names should be rendered as empty
+
+
+! Create a note
+
+As a regular user, when I want to add a new note, I want to be able to type right into the empty pre-created note.
+Once I start typing, the new empty note should appear allowing me to continue with the next note.
+
+* Editing the template note creates a new template note (content have to change)
+* Editing the template note turns it to a regular note, so saving changes should work exactly as with the regular note
+* If, after the template note turns it to a regular note, the title is still empty, the title watermark should change to "No title"
+* If after editing title/text stays empty, keep template note and don't create a new note
+
+
+! Delete a note
+
+As a regular user, I want to be able to delete any note
+
+* Clicking on "Delete" button deletes a note
+* No questions are asked, no undo provided
+* Note gets deleted from DropBox
+* Note is removed from the page without re-rendering any other notes
+* When done, load and render (async) one more note from the list (if exists), so the number of displayed notes stays the same
+
+
+! Load next 5 notes
+
+As a regular user, I want to see next 5 notes if the note I am interested in is not yet shown on the page
+
+* When clicked on "More" button load next 5 notes (or as many as could find)
+* Loading and rendering should be done the same as for the first 5 notes
+
+
+! Render links
+
+As a regular user, I want my hyperlinks to be automatically detected, shown as hyperlinks and be clickable.
+
+* When rendering the note text, run it through the regex that detects the hyperlinks and wrap it into <a> tag
+
+
+! Search
+
+As a regular user, I want to be able to search for my notes (by title).
+
+* Search text box with watermark "Search in titles"
+* When user enters the search string and presses "Enter":
+** Cleanup all the currently displayed notes
+** Load first 5 notes containing search pattern in the title
+** When "More" button is clicked, only load notes containing search pattern in the title
+
+
+! Search auto-suggest
+
+As a regular user, I feel frustrated when I only see first 5 notes and have no idea what is there.
+So I want a better hint on what data I can find in my storage
+
+* Auto-suggest search terms in the search textbox based on the titles that are already loaded
+* Auto-suggest initialized once after the page is initially loaded, so if you added a note, you need to refresh the page to update auto-suggest
+* Auto-suggest takes all existing titles in account, regardless of the current search filter enabled
+* Auto-suggest suggests individual terms used on any titles (term is a sequence of letters of any language)
+* Auto-suggest also suggests complete titles, but in this case all search terms already entered in the search textbox should be present in the title
+* Complete titles are shown after individual terms
+
+
+! Number of notes yet to load
+
+As a regular user, I feel frustrated when I only see first 5 notes and have no idea how many there are more.
+
+* Indicate number of notes matching the current search filter and not yet loaded on the "More" button: "More (N not loaded)"
+
+
+! Tags
+
+As a regular user, I want to organize notes into "taxonomies". Simply put, I want to be able to tag a note.
+
+* Tag is a any sequence of characters which starts with "#" and is separated from the rest of the text by spaces
+* Auto-suggest in search textbox treats tags exactly as individual terms
+* Typing "#" in the title of the note triggers auto-suggest that shows top 10 of previously entered tags matching the input
+* After the title is updated, all new tags from it become immediately available for the auto-suggest next time you edit the title
+
+
+! Wiki basic markup
+
+As a regular user, I want to be able to use basic formatting options to control how the text is rendered on the webpage.
+
+* *bold* is rendered as <b>bold</b>
+* _italics_ is rendered as <i>italics</i>
+* --deleted-- is rendered as <del>deleted</del>
+* ++underline++ is rendered as <u>underline</u>
+* ^superscript^ is rendered as <sup>superscript</sup>
+* ~subscript~ is rendered as <sub>subscript</sub>
+* Text inside {" and "} is not formatted and rendered "as is"
+* Text inside [ and ] becomes a hyperlink
+* Text inside {code} and {code} is formatted as a code
+
+
+! Wiki ul markup
+
+As a regular user, I want to be able to create unordered lists.
+
+* Line that starts with "- " or "* " creates a <li> within <ul> (<ul> is created if needed)
+* This story is about 1 level deep lists
+
+
+! Share a note
+
+As a regular user, I want to send a link to my friend with the note I created. 
+My friend should be able to see it correctly rendered.
+My friend should be able to see it even if doesn't have DropBox.
+
+* Generate a permanent link
+* When that link is opened, one single note should be rendered
+* No edit/create/delete functionality should be available in the preview
+
+
+! Undo delete
+
+As a regular user, I am worried that I can delete a note my mistake, accidentally clicking on "Delete"
+
+* Need to generate an "undo note", the note placeholder with the "Restore" button
+* "Restore" button, when clicked, should restore the note
+* The "undo note" should be generated at the position where the note used to be
+* The restored note should respond to events correctly (editing + save + re-delete)
+* After the page is refreshed, or another note is deleted, the "undo note" should disappear
+
+
+! Intro
+
+As a site owner, I want to give introduction for the user who comes to the site the first time. 
+After the user has connected to Dropbox, she should not see the intro anymore.
+
+* Render the intro if there is no flag in the local storage
+* Once user is authenticated, set the flag in the local storage that prevents intro next time
+
+
+! Progress indicator
+
+As a regular user, I want to have an understanding that the page is alive and doing something
+
+* Render the progress indicator while file list is being retrieved
+
+
+! Wiki headings markup
+
+As a regular user, I want to be able to create headers.
+
+* "! " in the beginning of the new line creates h1
+* "!! " in the beginning of the new line creates h2
+* "!!! " in the beginning of the new line creates h3
+* "!!!! " in the beginning of the new line creates h4
+* "!!!!! " in the beginning of the new line creates h5
+* "!!!!!! " in the beginning of the new line creates h6
+* Alternatively, you can use "h1. ", "h2. ", "h3. ", "h4. ", "h5. ", "h6. "
+
+
+! Adaptive height
+
+As a regular user, when I edit a note, if the text is long, I want to have a bigger text area for editing without the need to resize it.
+
+* If note text is longer than 10 lines, render the textarea 600px high
+* Otherwise, keep the same height: 300px
+* Count actual number of lines: count 1 line for every line end char
+* Additionaly, count 1 additional line for every sequence of 80 chars inside the same line
+
+
+! Explicit finish note editing
+
+As a first time user I don't understand where should I click to save note text.
+As a regular user, if I made wrong editing, I want to be able to cancel editing without saving the changes.
+
+* When switching to editing mode, replace the "Share Edit Delete" control buttons with "Save Cancel" buttons
+* Consider either physically replacing the content of the control panel or just changing the visibility
+* Clicking on "Save" saves the note text normally
+* Clicking on "Cancel" discards the changes
+* In any case, after the editing is finished, replace the "Save Cancel" control buttons with buttons "Share Edit Delete"
+
+
+! Explicit finish note editing - template note
+
+As a first time user I don't understand where should I click to save note text.
+As a regular user, I expect template note behave the same as a regular note when in editing
+
+* When switching to editing mode, show "Save Cancel" buttons
+* After the editing is finished, hide all buttons
+
+
+All above is done ======================================================================================================================================
+
+
+! Up to date
+* --Update packages--
+* Finish UT: all modules
+* --Rejected:Use Require.js module system?--
+* --Get rid of the code duplication--
+* --Why not caching in browser?--
+
+
+! Save draft
+
+As a regular user, I want the application to save my changes periodically as I type
+
+* Periodically save the document that is being edited
+? The same file or the draft file?
+? Do we need cancel button?
+
+
+! Offline work
+
+As a regular user, I want to make sure that the changes I did are eventually saved.
+
+* If the connection to DropBox is lost, queue the save operation
+* When the connection is restored, carry out the queued saves
+* Do not save the same file twice
+* Make sure to save the latest edit
+
+
+! Make search criteria linkable
+
+As a regular user, after I filtered the notes using the search string, I want to be able to save the URL. 
+Later, when I paste the saved URL into the address textbox of the browser, I want to be able the filter be applied from the start.
+
+* --Store the hashtags from URL in the state that is passed to the authenitcation endpoint together with the random number--
+* --When getting it back, decode the state into number and hashtags--
+* --Apply the hashtags to the current location--
+* --When the hashtag is updated directly in the URL, the search textbox should reflect the changes--
+* Use history API
+
+
+! Wiki more advanced markup
+
+
+! Insert images
+
+
+! Error handling
+
+As a regular user, I don't want to wait until the note is saved to DropBox, when I am done editing it, neither I want to see the confirmation dialog.
+I don't want my flow interrupted in any way.
+However, if the connection is lost and note could not be saved, I want to be informed, in the non-blocking way. 
+
+* Show an error panel, if there are errors
+* Add an error to the error panel, if it is already displayed
+* Allow to close an error panel, this loses all previously added errors
+
+
+! Allow to login as a different user (logout)
+
+! Insert shared note in your deck
+
+! Localization
+
+! First tag in the title determines a subfolder to store the note
+
+! Sequence of tags in the title determines a sequnce of subfolders the note should be stored under
+
+! Consider checking mime type filter files to show
+This would allow showing files with extensions other than ".txt"
+
+! Sort auto-suggest items:
+* A-Z
+* Frequency
+
+! The notes are sorted by date, the latest added first (no support on API level)
+
+! Add note from the open page
+
+! Android app
+
+! Edit note full-screen, notepad-like

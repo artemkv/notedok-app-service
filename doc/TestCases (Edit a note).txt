@@ -1,0 +1,7 @@
+﻿! Leave the title empty
+! Make 2 notes with the same title
+* By editing the title
+* By creating the new note with the duplicate non-empty title (edit title)
+* By creating the new note with the duplicate empty title (edit text)
+! Illegal chars in the title (Including *, +)
+! Watermark updates from "New note" to "No title"

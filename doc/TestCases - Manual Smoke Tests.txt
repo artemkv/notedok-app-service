@@ -1,0 +1,59 @@
+﻿! Create a note with empty title
+
+* Create a note with an empty title
+* Refresh
+
+Expected:
+* Note exists and can be shown
+* Title is empty
+* Title watermark is "No title"
+
+
+! Make note title empty
+
+* Create a note with title "My note"
+* Update note title - make empty
+* Refresh
+
+Expected:
+* Note exists and can be shown
+* Title is empty
+* Title watermark is "No title"
+
+
+! Share the note
+
+* Create a note with title containing special and unicode chars and text containing rich formatting (bold, italic, list, code, script block)
+* Click "share"
+* Copy the link and open in a new window
+
+Expected:
+* The title is shown correctly
+* File extension is not shown in the title
+* The text is correctly rendered
+* Note cannot be edited
+* No control buttons
+* Special chars are displayed correctly
+* Unicode chars are displayed correctly
+
+
+! Сreate new note by editing the text of the template
+
+! Create a new note only if changed
+
+* Type some text into the template title, then erase
+* Type some text into the template text, then erase
+
+Expected:
+* No new note created
+* Title placeholder is "New note"
+* Text placeholder is "Type your text here"
+
+
+! Overwrite
+
+* Create note "aaa"
+* Create another note "aaa" - both notes should be visible
+* Modify one of the notes - there should not be 3rd note created
+* delete one of the notes and restore - both notes should be visible
+* delete one of the notes, create note "aaa", restore deleted notes - 3 notes should be visible
