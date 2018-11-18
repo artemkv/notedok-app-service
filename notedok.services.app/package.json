@@ -23,12 +23,16 @@
     "style-loader": "^0.23.1",
     "webpack": "^4.25.1",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.10"
+    "webpack-dev-server": "^3.1.10",
+    "webpack-merge": "^4.1.4"
   },
   "scripts": {
     "clean": "rimraf dist",
     "test": "qunit",
-    "dev": "webpack-dev-server",
-    "build": "webpack"
+    "build:dev": "webpack --config webpack.dev.js",
+    "build:prod": "webpack --config webpack.prod.js",
+    "dev": "npm run clean && npm run test && npm run build:dev",
+    "start": "npm run dev && webpack-dev-server --config webpack.dev.js",
+    "prod": "npm run clean && npm run test && npm run build:prod"
   }
 }
