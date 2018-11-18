@@ -1,9 +1,9 @@
 ﻿"use strict";
 
-import $ from "jquery";
-import Formatting from "./formatting";
-import UiStrings from "./uistrings";
-import Util from "./util";
+const $ = require("jquery");
+const Formatting = require("./formatting");
+const UiStrings = require("./uistrings");
+const Util = require("./util");
 
 function htmlEscape(unsafe) {
     let safe = String(unsafe);
@@ -347,4 +347,4 @@ const ui = {
     getProgressIndicator: getProgressIndicator
 };
 
-export default ui;
+module.exports = ui;

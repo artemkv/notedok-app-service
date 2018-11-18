@@ -1,6 +1,6 @@
 ﻿"use strict";
 
-import $ from "jquery";
+const $ = require("jquery");
 
 function extractMetadataFromSearchResult(result) {
     return result.matches.map(function searchResultToMetadata(x) {
@@ -293,4 +293,4 @@ const storage = {
     }
 };
 
-export default storage;
+module.exports = storage;

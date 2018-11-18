@@ -1,8 +1,8 @@
 ﻿"use strict";
 
-import Util from "./util";
-import NoteStorageDropbox from "./storage-dropbox";
-import NoteStorageDebug from "./storage-debug";
+const Util = require("./util");
+const NoteStorageDropbox = require("./storage-dropbox");
+const NoteStorageDebug = require("./storage-debug");
 
 const CLIENT_ID = "y9i1eshn74yuenq";
 const AUTH_STATE_KEY = "authstate";
@@ -61,7 +61,7 @@ function authenticate() {
         fileStorage.token = token;
 
         // Tidy up the url
-        // TODO: potentially re-create an original hash from the state
+        // TODO: potentially re-create an original hash = require(the state
         // TODO: search string currently is lost
         location.hash = "";
 
@@ -80,4 +80,4 @@ const authentication = {
     authenticate: authenticate
 };
 
-export default authentication;
+module.exports = authentication;

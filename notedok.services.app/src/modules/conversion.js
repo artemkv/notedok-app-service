@@ -1,6 +1,6 @@
 ﻿"use strict";
 
-import Util from "./util";
+const Util = require("./util");
 
 const TITLE_POSTFIX_SEPARATOR = "~~";
 
@@ -37,4 +37,4 @@ const conversion = {
     }
 };
 
-export default conversion;
+module.exports = conversion;

@@ -206,4 +206,4 @@ const formatting = {
     createWikiToHtmlFormatter: createWikiToHtmlFormatter
 };
 
-export default formatting;
+module.exports = formatting;

@@ -119,4 +119,4 @@ const util = {
     countLines
 };
 
-export default util;
+module.exports = util;

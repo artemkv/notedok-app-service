@@ -15,4 +15,4 @@ const uistrings = {
     SearchTextBoxPlaceholder: "Search in titles"
 };
 
-export default uistrings;
+module.exports = uistrings;

@@ -1,13 +1,13 @@
 ﻿"use strict";
 
-import $ from "jquery";
-import "devbridge-autocomplete";
-import Util from "./modules/util";
-import UserInterface from "./modules/ui";
-import Authentication from "./modules/authentication";
-import Conversion from "./modules/conversion";
-import "./notedok.css";
-import "./spinner.css";
+const $ = require("jquery");
+require("devbridge-autocomplete");
+const Util = require("./modules/util");
+const UserInterface = require("./modules/ui");
+const Authentication = require("./modules/authentication");
+const Conversion = require("./modules/conversion");
+require("./notedok.css");
+require("./spinner.css");
 
 // Constants
 const NOTES_ON_PAGE = 5;
