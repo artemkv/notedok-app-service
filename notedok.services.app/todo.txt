@@ -2,3 +2,4 @@
 - gzip on resources
 - lint
 - fail build on ut failure
+- maybe have css as a separate css file in dist with hash (check out https://webpack.js.org/plugins/extract-text-webpack-plugin/)
