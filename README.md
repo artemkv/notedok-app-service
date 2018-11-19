@@ -1,5 +1,10 @@
 NotedOK App Service
 
+# Intro
+
+On the surface, minimalistic note making web site.
+Under the hood, bunch of plain text files in your Dropbox.
+
 # Build
 
 ## Individual Build Steps
