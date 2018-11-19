@@ -6,6 +6,11 @@
     "name": "artemkv",
     "email": "artemkv@gmail.com"
   },
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/artemkv/notedok-app-service.git"
+  },
   "dependencies": {
     "jquery": "^3.3.1",
     "devbridge-autocomplete": "^1.4.9"
