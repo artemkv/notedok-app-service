@@ -1,5 +1,4 @@
 - cache index.html as public, 86400''
+- gzip on resources
 - lint
-- hashes
-- split jquery from the app?
 - fail build on ut failure
