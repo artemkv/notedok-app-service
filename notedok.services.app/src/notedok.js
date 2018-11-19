@@ -117,7 +117,6 @@ let _hashTagsExtractor = (function () {
     };
 })();
 
-//#region Business Logic
 function showError(error) {
     // TODO: nice error view
     alert(error);
@@ -617,14 +616,12 @@ function refreshNotes() {
         showError);
 }
 
-//#region Event Handlers
 function onDocumentClick(event) {
     // Click is not inside the textarea
     if (event.target && !$(event.target).hasClass("note-text-editable")) { // TODO: class hardcoded
         endAllNotesTextEditing(true);
     }
 }
-//#endregion Event Handlers
 
 function setupEventDelegation() {
     $(document).bind("click", onDocumentClick);
@@ -662,6 +659,5 @@ function initialize() {
         UserInterface.getIntroConnectButton().bind("click", connect);
     }
 }
-//#endregion Business Logic
 
 initialize();
