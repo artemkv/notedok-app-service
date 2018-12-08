@@ -1,4 +1,4 @@
-NotedOK App Service
+NotedOK App Service (https://notedok.com)
 
 # Intro
 
