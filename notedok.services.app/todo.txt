@@ -1,3 +1,5 @@
+- use limit on list_folder api, otherwise defaults to 500
+
 - cache index.html as public, 86400''
 - gzip on resources
 - lint

@@ -4,7 +4,7 @@ const $ = require("jquery");
 
 function extractMetadataFromSearchResult(result) {
     return result.matches.map(function searchResultToMetadata(x) {
-        return x.metadata;
+        return x.metadata.metadata;
     });
 }
 
@@ -55,18 +55,24 @@ const storage = {
     // The results are currently not in any particular order. // TODO: maybe it makes sense to sort returned files by date
     retrieveFileList: function retrieveFileList(searchString, onSuccess, onError) { // TODO: convert to promise
         if (searchString) {
-            var url = "https://api.dropboxapi.com/2/files/search";
+            var url = "https://api.dropboxapi.com/2/files/search_v2";
             var args = {
-                path: "",
                 query: searchString,
-                max_results: 1000
+                options: {
+                    path: "",
+                    max_results: 1000,
+                    filename_only: false, // Allows searching in content
+                    file_extensions: ["txt"],
+                    order_by: "last_modified_time"
+                }
             };
         } else {
             var url = "https://api.dropboxapi.com/2/files/list_folder";
             // TODO: now we are simply ignoring the "has_more" in the response.
             // So, there is a possibility that not all the files are retrieved. Don't see the limit documented.
             var args = {
-                path: ""
+                path: "",
+                limit: 1000
             };
         }
 

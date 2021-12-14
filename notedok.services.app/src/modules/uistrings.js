@@ -12,7 +12,7 @@ const uistrings = {
     SaveButtonText: "Save",
     CancelButtonText: "Cancel",
     RestoreButtonText: "Restore",
-    SearchTextBoxPlaceholder: "Search in titles"
+    SearchTextBoxPlaceholder: "Search in titles or content"
 };
 
 module.exports = uistrings;
