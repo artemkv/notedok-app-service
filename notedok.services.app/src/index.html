@@ -1,9 +1,28 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
     <title>NotedOK</title>
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0" />
+
+    <script>
+        var config = {
+            acc: '9b91a065-4ea1-4d5f-b6db-0d0912ff051a',
+            aid: 'd7b97e90-e2a7-4ba4-b789-ee9bba09a113',
+            prod_hostname: 'notedok.com'
+        };
+
+        (function (accid, appid, version, isRelease) {
+            window['featuregraph.net'] = { config };
+            var js = document.createElement('script');
+            var fjs = document.getElementsByTagName('script')[0];
+            js.src = "https://agent.featuregraph.net/featuregraph.bundle.min.js";
+            js.async = 1;
+            fjs.parentNode.insertBefore(js, fjs);
+        })(config);
+    </script>
 </head>
+
 <body>
     <div class="client-area-outer">
         <div class="client-area-inner">
@@ -26,4 +45,5 @@
     <div id="search_autocomplete_suggestions_container" class="autocomplete-suggestions-container"></div>
     <div id="note_autocomplete_suggestions_container" class="autocomplete-suggestions-container"></div>
 </body>
+
 </html>

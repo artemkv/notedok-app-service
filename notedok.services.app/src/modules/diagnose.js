@@ -25,14 +25,14 @@ function runDiagnostics() {
         .then(function () { counter++; return testBasicFormatting(); })
         .then(function () { counter++; return testDeleteNote(); })
         .then(function () { counter++; return testUndoDeleteNote(); })
-        .then(function () { counter++; return testSearch(); })
+        .then(function () { counter++; return testSearch(); }) // TODO: broken
         .then(function () { counter++; return testEditNoteTitle(); })
         .then(function () { counter++; return testCreateNewNoteSpecial(); })
         .then(function () { counter++; return testLoadNotesInBatches(); })
         .then(function () { counter++; return testEditNoteMakeTitlesTheSame(); })
         .then(function () { counter++; return testLoadOneMoreNote(); })
         .then(function () { counter++; return testEditNoteTextMakeEmpty(); })
-        .then(function () { counter++; return testShareNote(); })
+        .then(function () { counter++; return testShareNote(); }) // TODO: broken
         .then(function () { counter++; return testAutoSuggest(); })
         .then(function () { counter++; return testTextAreaSize(); })
         .then(function () { counter++; return testNoteLoadingOrder(); })

@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const htmlWebpackPlugin = require('html-webpack-plugin');
-const copyWebpackPlugin = require('copy-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -12,7 +12,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: './[name].[hash].bundle.js'
+        filename: './[name].[contenthash].bundle.js'
     },
     module: {
         rules: [
@@ -30,6 +30,8 @@ module.exports = {
     optimization: {
         // Extract boilerplate code into runtime chunk
         runtimeChunk: 'single',
+        // Keeps modules id consistent between builds
+        moduleIds: 'deterministic',
         // Put all third-party dependencies into the vendors chunk
         splitChunks: {
             cacheGroups: {
@@ -42,8 +44,6 @@ module.exports = {
         }
     },
     plugins: [
-        // Keeps modules id consistent between builds
-        new webpack.HashedModuleIdsPlugin(),
         new htmlWebpackPlugin({
             filename: 'index.html',
             template: './src/index.html',
@@ -54,9 +54,11 @@ module.exports = {
             template: './src/shared.html',
             chunks: ['runtime', 'vendors', 'shared']
         }),
-        new copyWebpackPlugin([
-            { from: './src/favicon.ico' }
-        ])
+        new CopyPlugin({
+            patterns: [
+                { from: './src/favicon.ico' },
+            ]
+        })
     ],
     devtool: 'source-map'
 };
